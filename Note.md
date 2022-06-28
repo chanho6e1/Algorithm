@@ -10,3 +10,20 @@ for c in num:
 
 print(result)
 ```
+
+2. <https://www.acmicpc.net/problem/11047>
+```
+n, k = map(int, input().split())
+coin = []
+for i in range(n):
+    coin.append(int(input()))
+coin.reverse()
+result = 0
+for c in coin:
+    if c>k:
+        continue
+    result += k//c
+    k %= c
+
+print(result)
+```
