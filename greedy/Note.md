@@ -27,3 +27,25 @@ for c in coin:
 
 print(result)
 ```
+
+3. <https://www.acmicpc.net/problem/1946>
+```
+import sys
+input = sys.stdin.readline
+t = int(input())
+for i in range(t):
+    n = int(input()) #지원자의 숫자
+    people = []
+    for i in range(n):
+        document, interview = map(int, input().split())
+        people.append([document, interview])
+    people = sorted(people, key=lambda x:x[0])
+    Max = people[0][1]
+    result = 1
+    for i in range(1,n):
+        if Max>people[i][1]:
+            result += 1
+            Max = people[i][1]
+
+    print(result)
+```
