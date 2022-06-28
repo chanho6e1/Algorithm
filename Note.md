@@ -1,4 +1,4 @@
-# 매 순간 최적의 선택을 하자
+## 매 순간 최적의 선택을 하자
 1. <https://www.acmicpc.net/problem/5585>
 ```
 n = 1000 - int(input())
