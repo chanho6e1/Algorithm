@@ -65,3 +65,31 @@ for i in range(n):
 
 print(result)
 ```
+
+5. <https://www.acmicpc.net/problem/13904>
+```
+import sys
+input = sys.stdin.readline
+n = int(input())
+task = []
+for i in range(n):
+    d, w = map(int, input().split())
+    task.append([d,w])
+task.sort()
+date = task[-1][0]
+result = 0
+
+temp = []
+while True:
+    if date == 0:
+        break
+    while task and task[-1][0] >= date:
+        temp.append(task.pop()[1])
+    date -= 1
+    if not temp:
+        continue
+    temp.sort()
+    result += temp.pop()
+
+print(result)
+```
