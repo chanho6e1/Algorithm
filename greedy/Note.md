@@ -93,3 +93,23 @@ while True:
 
 print(result)
 ```
+
+6. <https://www.acmicpc.net/problem/2217>
+```
+import sys
+input = sys.stdin.readline
+n = int(input())
+w = []
+for i in range(n):
+    w.append(int(input()))
+
+w.sort(reverse = True)
+result = 0
+
+for i in range(n):
+    result = max(result, w[i]*(i+1))
+
+print(result)
+```
+
+7.
