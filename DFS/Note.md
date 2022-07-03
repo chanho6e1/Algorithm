@@ -69,7 +69,27 @@ print()
 bfs(v)
 ```
 
-3. <>
+3. <https://www.acmicpc.net/problem/2606>
 ```
+import sys
+input = sys.stdin.readline
+n = int(input()) #컴퓨터 수
+c = int(input())
+net = [[] for _ in range(n+1)]
+for _ in range(c):
+    n1, n2 = map(int, input().split())
+    net[n1].append(n2)
+    net[n2].append(n1)
+
+visited = [0] * (n+1)
+
+def dfs(v):
+    visited[v] = 1
+    for i in net[v]:
+        if not visited[i]:
+            dfs(i)
+
+dfs(1)
+print(visited.count(1)-1)
 ```
 
