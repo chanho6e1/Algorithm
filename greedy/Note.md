@@ -112,4 +112,30 @@ for i in range(n):
 print(result)
 ```
 
-7.
+7. <https://www.acmicpc.net/problem/2839>
+```
+import java.util.Scanner;
+
+class Solution{
+	public static void main(String args[]) throws Exception{
+
+		Scanner sc = new Scanner(System.in);
+		
+		int n = sc.nextInt();
+		
+		if (n == 4 || n == 7) {
+			System.out.println(-1);
+		}
+		else if(n%5==0) {
+			System.out.println(n/5);
+		}
+		else if(n%5 == 1 || n %5 == 3) {
+			System.out.println((n/5)+1);
+		}
+		else if(n%5==2||n%5==4) {
+			System.out.println((n/5)+2);
+		}
+		
+	}
+}
+```
