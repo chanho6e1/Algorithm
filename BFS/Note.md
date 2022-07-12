@@ -53,4 +53,51 @@ bfs(1)
 print(visited.count(1)-1)
 ```
 
-3. 
+3. <https://www.acmicpc.net/problem/2468>
+```
+from collections import deque
+import sys
+input = sys.stdin.readline
+
+n = int(input())
+graph = []
+maxnum = 0
+for i in range(n):
+    graph.append(list(map(int, input().split())))
+    for j in range(n):
+        maxnum = max(graph[i][j], maxnum)
+
+dx = [1, -1, 0, 0]
+dy = [0, 0, 1, -1]
+
+def bfs(depth, x, y, visited):
+    q = deque()
+    q.append([x,y])
+    visited[x][y] = 1
+    while q:
+        x, y = q.popleft()
+
+        for i in range(4):
+            nx = x + dx[i]
+            ny = y + dy[i]
+
+            if 0<=nx<n and 0<=ny<n:
+                if visited[nx][ny] == 0 and graph[nx][ny]>depth:
+                    visited[nx][ny] = 1
+                    q.append([nx,ny])
+
+res = 0
+for i in range(maxnum):
+    visited = [[0]*n for _ in range(n)]
+    cnt = 0
+
+    for j in range(n):
+        for k in range(n):
+            if graph[j][k] > i and visited[j][k] == 0:
+                bfs(i, j, k, visited)
+                cnt += 1
+
+    res = max(res, cnt)
+
+print(res)
+```
