@@ -102,7 +102,48 @@ for i in range(maxnum):
 print(res)
 ```
 
-4. <>
+4. <https://www.acmicpc.net/problem/2583>
 ```
+from collections import deque
+import sys
+input = sys.stdin.readline
 
+m, n, k = map(int, input().split())
+
+graph = [[0]*n for _ in range(m)]
+
+for i in range(k):
+    x1, y1, x2, y2 = map(int, input().split())
+    for j in range(y1, y2):
+        for k in range(x1, x2):
+            graph[j][k] = 1
+
+dx = [1, -1, 0, 0]
+dy = [0, 0, 1, -1]
+
+cnt = []
+q = deque()
+
+for i in range(m):
+    for j in range(n):
+        if graph[i][j] ==0:
+            temp = 1
+            graph[i][j] = 1
+            q.append([i,j])
+            while q:
+                x, y = q.popleft()
+                for k in range(4):
+                    nx = x + dx[k]
+                    ny = y + dy[k]
+
+                    if 0<=nx<m and 0<=ny<n and graph[nx][ny] == 0:
+                        graph[nx][ny] = 1
+                        temp+=1
+                        q.append([nx,ny])
+            cnt.append(temp)
+
+print(len(cnt))
+cnt.sort()
+for i in cnt:
+    print(i, end = ' ')
 ```
