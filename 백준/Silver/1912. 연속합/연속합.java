@@ -23,13 +23,13 @@ public class Main {
         dp[0] = arr[0];
         max = dp[0];
 
-//        for (int i=1; i<N; i++){
-//            dp[i] = Math.max(dp[i-1]+arr[i], arr[i]);
-//
-//            max = Math.max(max, dp[i]);
-//        }
+        for (int i=1; i<N; i++){
+            dp[i] = Math.max(dp[i-1]+arr[i], arr[i]);
 
-        TopDown(N-1);
+            max = Math.max(max, dp[i]);
+        }
+
+//        TopDown(N-1);
 
         System.out.println(max);
     }
