@@ -34,12 +34,6 @@ class Solution {
         }
         
         Collections.sort(result);
-        int[] answer = new int[result.size()];
-        for(int i=0; i<result.size(); i++){
-            answer[i] = result.get(i);
-        }
-        // answer = result.toArray(new int[result.size()]);
-        
-        return answer;
+        return result.stream().mapToInt(integer -> integer).toArray();
     }
 }
