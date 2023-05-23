@@ -2,17 +2,17 @@ import java.util.*;
 
 class Solution {
     public int[] solution(int[] array, int[][] commands) {
-        int[] answer = {};
+        int[] answer = new int[commands.length];
         
-        ArrayList<Integer> list = new ArrayList<>();
+        int i = 0;
         
         for (int[] command : commands){
             int[] temp = Arrays.copyOfRange(array, command[0]-1, command[1]);
             Arrays.sort(temp);
-            list.add(temp[command[2]-1]);
+            answer[i++] = temp[command[2]-1];
         }
         
         
-        return list.stream().mapToInt(Integer::intValue).toArray();
+        return answer;
     }
 }
