@@ -3,22 +3,21 @@ class Solution {
         int answer = 0;
         
         for (String bab : babbling){
-            bab = bab.replaceAll("aya", "1");
-            if(bab.contains("11")) continue;
             
-            bab = bab.replaceAll("ye", "2");
-            if(bab.contains("22")) continue;
+            if (bab.contains("ayaaya")) continue;
+            if (bab.contains("yeye")) continue;
+            if (bab.contains("woowoo")) continue;
+            if (bab.contains("mama")) continue;
             
-            bab = bab.replaceAll("woo", "3");
-            if(bab.contains("33")) continue;
+            bab = bab.replaceAll("aya", " ");
             
-            bab = bab.replaceAll("ma", "4");
-            if(bab.contains("44")) continue;
+            bab = bab.replaceAll("ye", " ");
             
-            bab = bab.replaceAll("1", "");
-            bab = bab.replaceAll("2", "");
-            bab = bab.replaceAll("3", "");
-            bab = bab.replaceAll("4", "");
+            bab = bab.replaceAll("woo", " ");
+            
+            bab = bab.replaceAll("ma", " ");
+            
+            bab = bab.replaceAll(" ", "");
             
             if(bab.equals("")) answer++;
             
