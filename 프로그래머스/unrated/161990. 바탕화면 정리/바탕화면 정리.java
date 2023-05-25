@@ -9,22 +9,22 @@ class Solution {
         
         ArrayList<int[]> list = new ArrayList<>();
         
+        int minX = Integer.MAX_VALUE;
+        int minY = Integer.MAX_VALUE;
+        int maxX = Integer.MIN_VALUE;
+        int maxY = Integer.MIN_VALUE;
+        
         for(int i=0; i<N; i++){
             for(int j=0; j<M; j++){
                 if (wallpaper[i].charAt(j) == '#'){
-                    list.add(new int[]{i, j});
+                    minX = Math.min(minX, i);
+                    minY = Math.min(minY, j);
+                    maxX = Math.max(maxX, i);
+                    maxY = Math.max(maxY, j);
                 }
             }
         }
         
-        Collections.sort(list, (o1, o2) -> (o1[0] - o2[0]));
-        answer[0] = list.get(0)[0];
-        answer[2] = list.get(list.size()-1)[0]+1;
-        
-        Collections.sort(list, (o1, o2) -> (o1[1] - o2[1]));
-        answer[1] = list.get(0)[1];
-        answer[3] = list.get(list.size()-1)[1] + 1;
-        
-        return answer;
+        return new int[]{minX, minY, maxX+1, maxY+1};
     }
 }
