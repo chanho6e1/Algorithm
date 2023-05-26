@@ -11,10 +11,7 @@ class Solution {
         
         int N = nums.length/2;
         
-        if(map.size() > N) answer = N;
-        else
-            answer = map.size();
-        
+        answer = Math.min(N, map.size());
         
         return answer;
     }
