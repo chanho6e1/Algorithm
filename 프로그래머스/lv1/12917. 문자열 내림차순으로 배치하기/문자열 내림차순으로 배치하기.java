@@ -4,10 +4,7 @@ class Solution {
     public String solution(String s) {
         String answer = "";
         
-        char[] arr = new char[s.length()];
-        for(int i=0; i<s.length(); i++){
-            arr[i] = s.charAt(i);
-        }
+        char[] arr = s.toCharArray();
         
         Arrays.sort(arr);
         
