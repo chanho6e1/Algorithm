@@ -3,22 +3,19 @@ class Solution {
         String answer = "";
         
         for(int i=1; i<numLog.length; i++){
-            int preNum = numLog[i-1];
-            if ((preNum+1) == numLog[i]){
-                answer += 'w';
-                continue;
-            }
-            if ((preNum-1) == numLog[i]){
-                answer += 's';
-                continue;
-            }
-            if ((preNum+10) == numLog[i]){
-                answer += 'd';
-                continue;
-            }
-            if ((preNum-10) == numLog[i]){
-                answer += 'a';
-                continue;
+            switch (numLog[i] - numLog[i-1]){
+                case 1:
+                    answer += 'w';
+                    break;
+                case -1:
+                    answer += 's';
+                    break;
+                case 10:
+                    answer += 'd';
+                    break;
+                case -10:
+                    answer += 'a';
+                    break;
             }
         }
         
