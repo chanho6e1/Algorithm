@@ -2,35 +2,21 @@ import java.util.*;
 
 class Solution {
     public int[] solution(int k, int[] score) {
+        int[] answer = new int[score.length];
         
-        ArrayList<Integer> result = new ArrayList<>();
-        ArrayList<Integer> list = new ArrayList<>();
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
         
-        for (int s : score){
+        for (int i=0; i<score.length; i++){
             
-            if (list.size()<k){
-                list.add(s);
-                Collections.sort(list);
-                // result.add(list.get(0));
-                // continue;
+            pq.offer(score[i]);
+            
+            if (pq.size()>k){
+                pq.poll();
             }
             
-            else if (list.size()==k){
-                int min = list.get(0);
-                
-                if (min < s){
-                    list.remove(0);
-                    list.add(s);
-                    Collections.sort(list);
-                }
-                
-                // result.add(list.get(0));
-            }
-            
-            result.add(list.get(0));
-            
+            answer[i] = pq.peek();
         }
         
-        return result.stream().mapToInt(i -> i).toArray();
+        return answer;
     }
 }
