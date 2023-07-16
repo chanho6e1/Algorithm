@@ -19,7 +19,7 @@ class Solution {
         }
         if("".equals(answer.toString())){
            return "-1";
-        }else if(answer.toString().charAt(0)==48){
+        }else if(answer.toString().charAt(0)=='0'){
            return "0";
         }else {
             return answer.toString();
