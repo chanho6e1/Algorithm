@@ -5,8 +5,8 @@ import java.util.*;
 
 public class Main {
 
-    static boolean[] visited;
     static ArrayList<Integer>[] list;
+    static boolean[] visited;
     static StringBuilder sb;
 
     public static void main(String[] args) throws IOException {
@@ -16,13 +16,14 @@ public class Main {
 
         int N = Integer.parseInt(st.nextToken()); // 정점 개수
         int M = Integer.parseInt(st.nextToken()); // 간선 개수
-        int V = Integer.parseInt(st.nextToken()); // 탐색 시작 정점
+        int V = Integer.parseInt(st.nextToken()); // 탐색을 시작할 정점 번호
 
-        list = new ArrayList[N+1];
-        for (int i=0; i<N+1; i++)
+        list = new ArrayList[N + 1];
+
+        for (int i = 1; i <= N; i++)
             list[i] = new ArrayList<>();
 
-        for (int i=0; i<M; i++){
+        for (int i = 0; i < M; i++) {
             st = new StringTokenizer(br.readLine());
             int a = Integer.parseInt(st.nextToken());
             int b = Integer.parseInt(st.nextToken());
@@ -31,13 +32,13 @@ public class Main {
             list[b].add(a);
         }
 
-        for (int i=0; i<N+1; i++)
+        for (int i = 1; i <= N; i++)
             Collections.sort(list[i]);
 
-        visited = new boolean[N+1];
+        visited = new boolean[N + 1];
         dfs(V);
+        visited = new boolean[N + 1];
         sb.append("\n");
-        visited = new boolean[N+1];
         bfs(V);
 
         System.out.print(sb);
@@ -48,11 +49,13 @@ public class Main {
         q.offer(v);
         visited[v] = true;
 
-        while (!q.isEmpty()){
+        while (!q.isEmpty()) {
             int now = q.poll();
             sb.append(now + " ");
-            for (Integer i : list[now]){
+
+            for (int i : list[now]) {
                 if (visited[i]) continue;
+
                 q.offer(i);
                 visited[i] = true;
             }
@@ -60,10 +63,10 @@ public class Main {
     }
 
     private static void dfs(int v) {
-        sb.append(v + " ");
         visited[v] = true;
+        sb.append(v + " ");
 
-        for (Integer i : list[v]){
+        for (int i : list[v]) {
             if (visited[i]) continue;
             dfs(i);
         }
