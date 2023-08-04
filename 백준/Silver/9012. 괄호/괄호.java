@@ -7,29 +7,28 @@ import java.util.StringTokenizer;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = null;
-        StringBuilder sb = new StringBuilder();
-
         int T = Integer.parseInt(br.readLine());
 
-        for (int i=0; i<T; i++){
-            char[] chars = br.readLine().toCharArray();
+        StringBuilder sb = new StringBuilder();
+
+        for (int t = 0; t < T; t++) {
+            char[] arr = br.readLine().toCharArray();
             Stack<Character> stack = new Stack<>();
-            for (char ch : chars){
-                if (ch == '(')
-                    stack.push(ch);
-                else{
+            for (char a : arr) {
+                if (a == '(') stack.push('(');
+                else {
                     if (!stack.isEmpty() && stack.peek() == '(')
                         stack.pop();
-                    else stack.push(ch);
+                    else
+                        stack.push(')');
                 }
             }
 
-            if (stack.isEmpty()) sb.append("YES");
+            if (stack.size() == 0) sb.append("YES");
             else sb.append("NO");
             sb.append("\n");
         }
 
-        System.out.println(sb);
+        System.out.print(sb);
     }
 }
